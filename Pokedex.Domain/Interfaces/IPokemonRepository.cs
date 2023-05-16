@@ -1,4 +1,5 @@
 ﻿using Pokedex.Domain.Entities;
+using Pokedex.Domain.Entities.Enums;
 
 namespace Pokedex.Domain.Interfaces
 {
@@ -7,6 +8,8 @@ namespace Pokedex.Domain.Interfaces
         Task<IEnumerable<Pokemon>> GetAllAsync();
         Task<Pokemon> GetByIdAsync(int id);
         Task<Pokemon> GetByNameAsync(string name);
+        Task<IEnumerable<Pokemon>> GetByTypeAsync(EPokemonType type);
+        Task<IEnumerable<Pokemon>> GetByRegionNameAsync(string regionName);
         Task<IEnumerable<Pokemon>> GetByStarterAsync();
         Task<IEnumerable<Pokemon>> GetByLegendaryAsync();
         Task<IEnumerable<Pokemon>> GetByMythicalAsync();
