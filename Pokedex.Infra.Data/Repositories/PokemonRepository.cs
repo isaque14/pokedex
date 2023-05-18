@@ -75,9 +75,11 @@ namespace Pokedex.Infra.Data.Repositories
                 .ToListAsync();
         }
 
-        public Task<IEnumerable<Pokemon>> GetByTypeAsync(EPokemonType type)
+        public async Task<IEnumerable<Pokemon>> GetByTypeAsync(EPokemonType type)
         {
-            throw new NotImplementedException();
+            return await _context.Pokemons
+                .Where(p => p.Type.Contains(type))
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Pokemon>> GetByUltraBeastAsync()
