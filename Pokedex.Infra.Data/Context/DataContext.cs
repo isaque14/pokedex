@@ -5,11 +5,11 @@ using Pokedex.Infra.Data.Identity;
 
 namespace Pokedex.Infra.Data.Context
 {
-    public class DataContext : IdentityDbContext<ApplicationUser>
+    public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            
+
         }
 
         public DbSet<Pokemon> Pokemons { get; set; }

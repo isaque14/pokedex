@@ -2,28 +2,25 @@
 
 namespace Pokedex.Domain.Entities
 {
-    public class Region : Entity
+    public sealed class Region : Entity
     {
         public string Name { get; private set; }
         public ICollection<Pokemon> Pokemons { get; set; }
 
-        public Region(string name, ICollection<Pokemon> pokemons)
+        public Region(string name)
         {
             Name = name;
-            Pokemons = pokemons;
         }
 
-        public Region(int id, string name, ICollection<Pokemon> pokemons)
+        public Region(int id, string name)
         {
             Id = id;
             Name = name;
-            Pokemons = pokemons;
         }
 
-        public void Update(string name, ICollection<Pokemon> pokemons)
+        public void Update(string name)
         {
             Name = name;
-            Pokemons = pokemons;
         }
     }
 }

@@ -20,10 +20,6 @@ namespace Pokedex.Infra.IoC
                 b => b.MigrationsAssembly(typeof(DataContext).Assembly.FullName))
             );
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<DataContext>()
-                .AddDefaultTokenProviders();
-
             services.AddScoped<IPokemonRepository, PokemonRepository>();
             services.AddScoped<IRegionRepository, RegionRepository>();
             return services;
