@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Pokedex.Application\Pokedex.Application.csproj" />
+    <ProjectReference Include="..\Pokedex.Domain\Pokedex.Domain.csproj" />
     <ProjectReference Include="..\Pokedex.Infra.Data\Pokedex.Infra.Data.csproj" />
   </ItemGroup>
 
