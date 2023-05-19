@@ -8,7 +8,7 @@ namespace Pokedex.Infra.Data.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Pokemon> builder)
         {
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.Name);
             builder.Property(x => x.Name).IsRequired().HasMaxLength(25);
             builder.Property(x => x.Type).IsRequired();
             builder.Property(x => x.Region).IsRequired();
