@@ -9,7 +9,8 @@ namespace Pokedex.Application.Services.ExternalAPI
         private readonly IPokeExternalAPIServiceRefit _refitService;
         private const int FirstPokeGen1 = 1;
         private const int LastPokeGen1 = 151;
-
+        private const string UrlBaseSpritPokemon = "https://firebasestorage.googleapis.com/v0/b/pokedex-28a17.appspot.com/o/pokedex%2F";
+          
         public GetDataPokemonInExternalAPIService(IPokeExternalAPIServiceRefit refitService)
         {
             _refitService = refitService;
@@ -30,34 +31,35 @@ namespace Pokedex.Application.Services.ExternalAPI
 
         public async Task<PokemonDTO> GetPokeInExternalAPIByNumberPokedexAsync(int id)
         {
-			try
-			{
+            try
+            {
                 var pokemonExternalAPI = await _refitService.GetPokemonByNumberPokedex(id);
 
 
                 var pokemonDTO = new PokemonDTO
                 {
-                    Name = pokemonExternalAPI.name,
-                    PokedexNumber = int.Parse(pokemonExternalAPI.number),
-                    Type = ConvertPokemonTypesStringInEnumEPokemonType(pokemonExternalAPI.types),
-                    Description = pokemonExternalAPI.description,
-                    EvolutionStage = pokemonExternalAPI.family.evolutionStage,
-                    EvolutionLine = pokemonExternalAPI.family.evolutionLine,
-                    IsStarter = pokemonExternalAPI.starter,
-                    IsLegendary = pokemonExternalAPI.legendary,
-                    IsMythical = pokemonExternalAPI.mythical,
-                    IsUltraBeast = pokemonExternalAPI.ultraBeast,
-                    IsMega = pokemonExternalAPI.mega,
-                    RegionName = GetRegionByGenerationNumber(pokemonExternalAPI.gen)
+                    Name = pokemonExternalAPI[0].name,
+                    PokedexNumber = int.Parse(pokemonExternalAPI[0].number),
+                    Type = ConvertPokemonTypesStringInEnumEPokemonType(pokemonExternalAPI[0].types),
+                    Description = pokemonExternalAPI[0].description,
+                    EvolutionStage = pokemonExternalAPI[0].family.evolutionStage,
+                    EvolutionLine = pokemonExternalAPI[0].family.evolutionLine,
+                    IsStarter = pokemonExternalAPI[0].starter,
+                    IsLegendary = pokemonExternalAPI[0].legendary,
+                    IsMythical = pokemonExternalAPI[0].mythical,
+                    IsUltraBeast = pokemonExternalAPI[0].ultraBeast,
+                    IsMega = pokemonExternalAPI[0].mega,
+                    RegionName = GetRegionByGenerationNumber(pokemonExternalAPI[0].gen),
+                    UrlImage = $"{UrlBaseSpritPokemon}{pokemonExternalAPI[0].number}.png?alt=media"                  
 
                 };
 
                 return pokemonDTO;
             }
-			catch (Exception e)
-			{
+            catch (Exception e)
+            {
                 throw new Exception(e.Message);
-			}
+            }
         }
 
         private List<EPokemonType> ConvertPokemonTypesStringInEnumEPokemonType(List<string> stringTypes)
@@ -113,7 +115,5 @@ namespace Pokedex.Application.Services.ExternalAPI
 
             return region;
         }
-
-        
     }
 }

@@ -11,7 +11,7 @@ namespace Pokedex.Application.Mappings
             CreateMap<Pokemon, PokemonDTO>().ReverseMap();
             CreateMap<Region, RegionDTO>().ReverseMap();
 
-            CreateMap<Pokemon, ExternalPoke>().ReverseMap();
+            CreateMap<Pokemon, Root>().ReverseMap();
         }
     }
 }

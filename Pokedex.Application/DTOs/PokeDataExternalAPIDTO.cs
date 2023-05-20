@@ -1,4 +1,4 @@
-﻿// Root myDeserializedClass = JsonConvert.DeserializeObject<List<Root>>(myJsonResponse);
+﻿// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
 public class Abilities
 {
     public List<string> normal { get; set; }
@@ -12,7 +12,7 @@ public class Family
     public List<string> evolutionLine { get; set; }
 }
 
-public class ExternalPoke
+public class Root
 {
     public string number { get; set; }
     public string name { get; set; }

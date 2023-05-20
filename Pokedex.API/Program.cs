@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Pokedex.Application.Interfaces.ExternalAPI;
+using Pokedex.Application.Services.ExternalAPI;
 using Pokedex.Infra.IoC;
 
 namespace Pokedex.API

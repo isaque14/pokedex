@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pokedex.Application.Interfaces.ExternalAPI;
+using Pokedex.Application.Services.ExternalAPI;
 using Pokedex.Domain.Interfaces;
 using Pokedex.Infra.Data.Context;
 using Pokedex.Infra.Data.Identity;
@@ -22,6 +24,7 @@ namespace Pokedex.Infra.IoC
 
             services.AddScoped<IPokemonRepository, PokemonRepository>();
             services.AddScoped<IRegionRepository, RegionRepository>();
+            services.AddScoped<IGetDataPokemonInExternalAPIService, GetDataPokemonInExternalAPIService>();
             return services;
         }
     }

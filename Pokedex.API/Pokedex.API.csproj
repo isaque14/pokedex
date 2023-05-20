@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Pokedex.Infra.IoC\Pokedex.Infra.IoC.csproj" />
   </ItemGroup>
 
