@@ -1,35 +1,34 @@
 ﻿using AutoMapper;
 using FandomStarWars.Application.CQRS.BaseResponses;
 using MediatR;
-using Pokedex.Application.CQRS.Pokemon.Requests.Querys;
+using Pokedex.Application.CQRS.Pokemons.Requests.Querys;
 using Pokedex.Application.DTOs;
 using Pokedex.Domain.Interfaces;
 
-namespace Pokedex.Application.CQRS.Pokemon.Handlers.Querys
+namespace Pokedex.Application.CQRS.Pokemons.Handlers.Querys
 {
-    public class GetPokemonsByStarterQueryHandler : IRequestHandler<GetPokemonsByStarterQueryRequest, GenericResponse>
+    public class GetAllPokemonsQueryHandler : IRequestHandler<GetAllPokemonsQueryRequest, GenericResponse>
     {
         private readonly IPokemonRepository _pokemonRepository;
         private readonly IMapper _mapper;
 
-        public GetPokemonsByStarterQueryHandler(IPokemonRepository pokemonRepository, IMapper mapper)
+        public GetAllPokemonsQueryHandler(IPokemonRepository pokemonRepository, IMapper mapper)
         {
             _pokemonRepository = pokemonRepository;
             _mapper = mapper;
         }
 
-        public async Task<GenericResponse> Handle(GetPokemonsByStarterQueryRequest request, CancellationToken cancellationToken)
+        public async Task<GenericResponse> Handle(GetAllPokemonsQueryRequest request, CancellationToken cancellationToken)
         {
             try
             {
-                var pokemonsEntity = await _pokemonRepository.GetByStarterAsync();
+                var pokemonsEntity = await _pokemonRepository.GetAllAsync();
                 var pokemonsDTO = _mapper.Map<IEnumerable<PokemonDTO>>(pokemonsEntity);
-
 
                 return new GenericResponse
                 {
                     IsSuccessful = true,
-                    Message = "Successfully obtained Starter Pokemons",
+                    Message = "Successfully obtained pokemons",
                     Object = pokemonsDTO
                 };
             }
@@ -38,7 +37,7 @@ namespace Pokedex.Application.CQRS.Pokemon.Handlers.Querys
                 return new GenericResponse
                 {
                     IsSuccessful = false,
-                    Message = e.Message
+                    Message = $"Error: {e.Message}"
                 };
             }
         }

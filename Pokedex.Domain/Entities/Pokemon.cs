@@ -26,26 +26,28 @@ namespace Pokedex.Domain.Entities
             List<EPokemonType> type,
             string description,
             int evolutionStage,
-            //List<string> evolutionLine,
+            List<string> evolutionLine,
             bool isStarter,
             bool isLegendary,
             bool isMythical,
             bool isUltraBeast,
             bool isMega,
-            string urlImage)
+            string urlImage,
+            string regionName)
         {
             Name = name;
             PokedexNumber = pokedexNumber;
             Type = type;
             Description = description;
             EvolutionStage = evolutionStage;
-            //EvolutionLine = evolutionLine;
+            EvolutionLine = evolutionLine;
             IsStarter = isStarter;
             IsLegendary = isLegendary;
             IsMythical = isMythical;
             IsUltraBeast = isUltraBeast;
             IsMega = isMega;
             UrlImage = urlImage;
+            RegionName = regionName;
         }
 
         public Pokemon(
@@ -55,7 +57,7 @@ namespace Pokedex.Domain.Entities
             List<EPokemonType> type,
             string description,
             int evolutionStage,
-            //List<string> evolutionLine,
+            List<string> evolutionLine,
             bool isStarter,
             bool isLegendary,
             bool isMythical,
@@ -69,7 +71,7 @@ namespace Pokedex.Domain.Entities
             Type = type;
             Description = description;
             EvolutionStage = evolutionStage;
-            //EvolutionLine = evolutionLine;
+            EvolutionLine = evolutionLine;
             IsStarter = isStarter;
             IsLegendary = isLegendary;
             IsMythical = isMythical;
@@ -84,7 +86,7 @@ namespace Pokedex.Domain.Entities
             List<EPokemonType> type,
             string description,
             int evolutionStage,
-            //List<string> evolutionLine,
+            List<string> evolutionLine,
             bool isStarter,
             bool isLegendary,
             bool isMythical,
@@ -97,7 +99,7 @@ namespace Pokedex.Domain.Entities
             Type = type;
             Description = description;
             EvolutionStage = evolutionStage;
-            //EvolutionLine = evolutionLine;
+            EvolutionLine = evolutionLine;
             IsStarter = isStarter;
             IsLegendary = isLegendary;
             IsMythical = isMythical;

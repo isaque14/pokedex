@@ -1,7 +1,8 @@
-﻿using Pokedex.Application.DTOs;
+﻿using FluentValidation.Results;
+using Pokedex.Application.DTOs;
 using Pokedex.Domain.Entities.Enums;
 
-namespace Pokedex.Application.CQRS.Pokemon.Requests.Commands.Base
+namespace Pokedex.Application.CQRS.Pokemons.Requests.Commands.Base
 {
     public class PokemonCommand 
     {
@@ -20,14 +21,14 @@ namespace Pokedex.Application.CQRS.Pokemon.Requests.Commands.Base
         public string RegionName { get; set; }
         public RegionDTO RegionDTO { get; set; }
 
-        //public string ErrorMensage()//(List<ValidationFailure> errors)
-        //{
-        //    var msg = "";
-        //    foreach (var erro in errors)
-        //    {
-        //        msg = msg + $"{erro + System.Environment.NewLine} ";
-        //    }
-        //    return msg;
-        //}
+        public string ErrorMensage(List<ValidationFailure> errors)
+        {
+            var msg = "";
+            foreach (var erro in errors)
+            {
+                msg = msg + $"{erro + System.Environment.NewLine} ";
+            }
+            return msg;
+        }
     }
 }

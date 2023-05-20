@@ -1,7 +1,7 @@
 ﻿using FandomStarWars.Application.CQRS.BaseResponses;
 using MediatR;
 
-namespace Pokedex.Application.CQRS.Pokemon.Requests.Querys
+namespace Pokedex.Application.CQRS.Pokemons.Requests.Querys
 {
     public class GetPokemonsByMythicalQueryRequest : IRequest<GenericResponse>
     {
