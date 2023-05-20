@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using Pokedex.Application.CQRS.Pokemons.Requests.Commands;
 
-namespace Pokedex.Application.CQRS.Pokemons.Validations.Pokemons
+namespace Pokedex.Application.CQRS.Pokemons.Validations
 {
     public class ValidateUpdatePokemon : AbstractValidator<UpdatePokemonCommandRequest>
     {
-        public ValidateUpdatePokemon() 
+        public ValidateUpdatePokemon()
         {
             RuleFor(p => p.Id)
                 .NotEmpty()

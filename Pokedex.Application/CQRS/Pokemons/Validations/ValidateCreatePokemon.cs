@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Pokedex.Application.CQRS.Pokemons.Requests.Commands;
 
-namespace Pokedex.Application.CQRS.Pokemon.Validations.Pokemon
+namespace Pokedex.Application.CQRS.Pokemons.Validations
 {
     public class ValidateCreatePokemon : AbstractValidator<CreatePokemonCommandRequest>
     {

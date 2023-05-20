@@ -2,7 +2,7 @@
 using FandomStarWars.Application.CQRS.BaseResponses;
 using MediatR;
 using Pokedex.Application.CQRS.Pokemons.Requests.Commands;
-using Pokedex.Application.CQRS.Pokemons.Validations.Pokemons;
+using Pokedex.Application.CQRS.Pokemons.Validations;
 using Pokedex.Application.DTOs;
 using Pokedex.Domain.Entities;
 using Pokedex.Domain.Interfaces;
