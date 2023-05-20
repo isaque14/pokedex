@@ -9,7 +9,7 @@ namespace Pokedex.Infra.IoC
     {
         public static IServiceCollection AddInfrastructureExternalApiPoke(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddRefitClient<IPokeExternalAPIService>()
+            services.AddRefitClient<IPokeExternalAPIServiceRefit>()
                 .ConfigureHttpClient(config => config.BaseAddress = new Uri("https://pokeapi.glitch.me/v1/"));
 
             return services;

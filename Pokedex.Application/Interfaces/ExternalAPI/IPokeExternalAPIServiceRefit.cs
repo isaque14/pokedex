@@ -2,7 +2,7 @@
 
 namespace Pokedex.Application.Services.ExternalAPI
 {
-    public interface IPokeExternalAPIService
+    public interface IPokeExternalAPIServiceRefit
     {
         [Get("pokemon/{id}")]
         [Headers("User-Agent: PokedexAPI (https://github.com/isaque14/pokedex, v1)")]

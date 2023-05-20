@@ -18,5 +18,6 @@ namespace Pokedex.Application.DTOs
         public bool IsMega { get; set; }
         public string UrlImage { get; set; }
         public string RegionName { get; set; }
+        public RegionDTO RegionDTO { get; set; }
     }
 }
