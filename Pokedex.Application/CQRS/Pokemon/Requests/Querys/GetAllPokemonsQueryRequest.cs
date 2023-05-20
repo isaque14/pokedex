@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Pokedex.Application.CQRS.Pokemon.Requests.Querys
 {
-    public class GetAllPokemonsQueryRequest : IRequest<GenericResponse>;
+    public class GetAllPokemonsQueryRequest : IRequest<GenericResponse>
     {
     }
 }

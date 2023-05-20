@@ -1,5 +1,4 @@
 ﻿using Pokedex.Domain.Entities.Enums;
-using Pokedex.Domain.Entities;
 
 namespace Pokedex.Application.DTOs
 {

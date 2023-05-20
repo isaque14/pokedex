@@ -42,4 +42,5 @@ namespace Pokedex.Application.CQRS.Pokemon.Handlers.Querys
                 };
             }
         }
+    }
 }
