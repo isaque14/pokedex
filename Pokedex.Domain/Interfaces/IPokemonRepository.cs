@@ -7,6 +7,7 @@ namespace Pokedex.Domain.Interfaces
     {
         Task<IEnumerable<Pokemon>> GetAllAsync();
         Task<Pokemon> GetByIdAsync(int id);
+        Task<Pokemon> GetByPokemonNumber(int pokemonNumber);
         Task<Pokemon> GetByNameAsync(string name);
         Task<IEnumerable<Pokemon>> GetByTypeAsync(EPokemonType type);
         Task<IEnumerable<Pokemon>> GetByRegionNameAsync(string regionName);

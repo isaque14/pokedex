@@ -22,6 +22,14 @@ namespace Pokedex.Infra.Data.Repositories
                 .ToListAsync();
         }
 
+        public async Task<Pokemon> GetByPokemonNumber(int pokemonNumber)
+        {
+            return await _context.Pokemons
+                .Where(x => x.PokedexNumber == pokemonNumber)
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<Pokemon> GetByIdAsync(int id)
         {
             return await _context.Pokemons
