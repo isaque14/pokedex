@@ -3,6 +3,7 @@ using FandomStarWars.Application.CQRS.BaseResponses;
 using MediatR;
 using Pokedex.Application.CQRS.Pokemon.Validations.Pokemon;
 using Pokedex.Application.CQRS.Pokemons.Requests.Commands;
+using Pokedex.Application.DTOs;
 using Pokedex.Domain.Entities;
 using Pokedex.Domain.Interfaces;
 
@@ -21,18 +22,18 @@ namespace Pokedex.Application.CQRS.Pokemons.Handlers.Commands
             _validator = validator;
         }
 
-        public Task<GenericResponse> Handle(CreatePokemonCommandRequest request, CancellationToken cancellationToken)
+        public async Task<GenericResponse> Handle(CreatePokemonCommandRequest request, CancellationToken cancellationToken)
         {
             var results = _validator.Validate(request);
 
             if (!results.IsValid)
             {
-                return Task.FromResult(new GenericResponse
+                return new GenericResponse
                 {
                     IsSuccessful = true,
                     Message = "Oops! Review the data you provided",
                     Object = request.ErrorMensage(results.Errors)
-                });
+                };
             }
 
             var pokemon = new Domain.Entities.Pokemon(
@@ -51,6 +52,26 @@ namespace Pokedex.Application.CQRS.Pokemons.Handlers.Commands
                 regionName: request.RegionName                
                 );
 
+            try
+            {
+                await _pokemonRepository.CreateAsync(pokemon);
+                var pokemonDTO = _mapper.Map<PokemonDTO>(pokemon);
+
+                return new GenericResponse
+                {
+                    IsSuccessful = true,
+                    Message = "successfully created pokemon",
+                    Object = pokemonDTO
+                };
+            }
+            catch (Exception e)
+            {
+                return new GenericResponse
+                {
+                    IsSuccessful = false,
+                    Message = e.Message
+                };
+            }
 
         }
     }
