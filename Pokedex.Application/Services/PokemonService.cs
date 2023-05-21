@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using FandomStarWars.Application.CQRS.BaseResponses;
 using MediatR;
+using Pokedex.Application.CQRS.Pokemons.Requests.Commands;
 using Pokedex.Application.CQRS.Pokemons.Requests.Querys;
+using Pokedex.Application.DTOs;
 using Pokedex.Application.Interfaces;
-using Pokedex.Domain.Entities;
-using Pokedex.Domain.Entities.Enums;
-using System.Xml.Linq;
 
 namespace Pokedex.Application.Services
 {
@@ -131,19 +130,25 @@ namespace Pokedex.Application.Services
             return response;
         }
 
-        public Task<GenericResponse> CreateAsync(Pokemon pokemon)
+        public async Task<GenericResponse> CreateAsync(PokemonDTO pokemonDTO)
         {
-            
+            var createPokemonCommand = _mapper.Map<CreatePokemonCommandRequest>(pokemonDTO);
+            var response = await _mediator.Send(createPokemonCommand);
+            return response;
         }
 
-        public Task<GenericResponse> UpdateAsync(Pokemon pokemon)
+        public async Task<GenericResponse> UpdateAsync(PokemonDTO pokemonDTO)
         {
-            throw new NotImplementedException();
+            var updatePokemonCommand = _mapper.Map<UpdatePokemonCommandRequest>(pokemonDTO);
+            var response = await _mediator.Send(updatePokemonCommand);
+            return response;
         }
 
-        public Task<GenericResponse> DeleteAsync(int id)
+        public async Task<GenericResponse> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var deletePokemonCommand = new DeletePokemonCommandRequest(id);
+            var response = await _mediator.Send(deletePokemonCommand);
+            return response;
         }
     }
 }
