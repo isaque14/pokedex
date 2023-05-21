@@ -120,9 +120,9 @@ namespace Pokedex.Application.Services
             return response;
         }
 
-        public Task<GenericResponse> GetByTypeAsync(EPokemonType type)
+        public async Task<GenericResponse> GetByTypeAsync(string type)
         {
-            var pokemonQuery = new GetPokemonByPokedexNumberQueryRequest(pokemonNumber);
+            var pokemonQuery = new GetPokemonsByTypeQueryRequest(type);
 
             if (pokemonQuery is null)
                 throw new Exception($"Entity could not be loaded.");
@@ -131,14 +131,9 @@ namespace Pokedex.Application.Services
             return response;
         }
 
-        public Task<GenericResponse> GetByUltraBeastAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<GenericResponse> CreateAsync(Pokemon pokemon)
         {
-            throw new NotImplementedException();
+            
         }
 
         public Task<GenericResponse> UpdateAsync(Pokemon pokemon)
