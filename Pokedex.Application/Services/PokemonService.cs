@@ -5,6 +5,7 @@ using Pokedex.Application.CQRS.Pokemons.Requests.Querys;
 using Pokedex.Application.Interfaces;
 using Pokedex.Domain.Entities;
 using Pokedex.Domain.Entities.Enums;
+using System.Xml.Linq;
 
 namespace Pokedex.Application.Services
 {
@@ -31,34 +32,70 @@ namespace Pokedex.Application.Services
             return response;
         }
 
-        public Task<GenericResponse> GetByIdAsync(int id)
+        public async Task<GenericResponse> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var pokemonQuery = new GetPokemonByIdQueryRequest(id);
+
+            if (pokemonQuery is null)
+                throw new Exception($"Entity could not be loaded.");
+
+            var response = await _mediator.Send(pokemonQuery);
+            return response;
         }
 
-        public Task<GenericResponse> GetByLegendaryAsync()
+        public async Task<GenericResponse> GetByLegendaryAsync()
         {
-            throw new NotImplementedException();
+            var pokemonQuery = new GetPokemonsByLegendaryQueryRequest();
+
+            if (pokemonQuery is null)
+                throw new Exception($"Entity could not be loaded.");
+
+            var response = await _mediator.Send(pokemonQuery);
+            return response;
         }
 
-        public Task<GenericResponse> GetbyMegaAsync()
+        public async Task<GenericResponse> GetbyMegaAsync()
         {
-            throw new NotImplementedException();
+            var pokemonQuery = new GetPokemonsByMegaQueryRequest();
+
+            if (pokemonQuery is null)
+                throw new Exception($"Entity could not be loaded.");
+
+            var response = await _mediator.Send(pokemonQuery);
+            return response;
         }
 
-        public Task<GenericResponse> GetByMythicalAsync()
+        public async Task<GenericResponse> GetByMythicalAsync()
         {
-            throw new NotImplementedException();
+            var pokemonQuery = new GetPokemonsByMythicalQueryRequest();
+
+            if (pokemonQuery is null)
+                throw new Exception($"Entity could not be loaded.");
+
+            var response = await _mediator.Send(pokemonQuery);
+            return response;
         }
 
-        public Task<GenericResponse> GetByNameAsync(string name)
+        public async Task<GenericResponse> GetByNameAsync(string name)
         {
-            throw new NotImplementedException();
+            var pokemonQuery = new GetPokemonByNameQueryRequest(name);
+
+            if (pokemonQuery is null)
+                throw new Exception($"Entity could not be loaded.");
+
+            var response = await _mediator.Send(pokemonQuery);
+            return response;
         }
 
-        public Task<GenericResponse> GetByPokemonNumber(int pokemonNumber)
+        public async Task<GenericResponse> GetByPokemonNumber(int pokemonNumber)
         {
-            throw new NotImplementedException();
+            var pokemonQuery = new GetPokemonByPokedexNumberQueryRequest(pokemonNumber);
+
+            if (pokemonQuery is null)
+                throw new Exception($"Entity could not be loaded.");
+
+            var response = await _mediator.Send(pokemonQuery);
+            return response;
         }
 
         public Task<GenericResponse> GetByRegionNameAsync(string regionName)
