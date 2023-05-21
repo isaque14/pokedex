@@ -98,19 +98,37 @@ namespace Pokedex.Application.Services
             return response;
         }
 
-        public Task<GenericResponse> GetByRegionNameAsync(string regionName)
+        public async Task<GenericResponse> GetByRegionNameAsync(string regionName)
         {
-            throw new NotImplementedException();
+            var pokemonQuery = new GetPokemonsByRegionNameQueryRequest(regionName);
+
+            if (pokemonQuery is null)
+                throw new Exception($"Entity could not be loaded.");
+
+            var response = await _mediator.Send(pokemonQuery);
+            return response;
         }
 
-        public Task<GenericResponse> GetByStarterAsync()
+        public async Task<GenericResponse> GetByStarterAsync()
         {
-            throw new NotImplementedException();
+            var pokemonQuery = new GetPokemonsByStarterQueryRequest();
+
+            if (pokemonQuery is null)
+                throw new Exception($"Entity could not be loaded.");
+
+            var response = await _mediator.Send(pokemonQuery);
+            return response;
         }
 
         public Task<GenericResponse> GetByTypeAsync(EPokemonType type)
         {
-            throw new NotImplementedException();
+            var pokemonQuery = new GetPokemonByPokedexNumberQueryRequest(pokemonNumber);
+
+            if (pokemonQuery is null)
+                throw new Exception($"Entity could not be loaded.");
+
+            var response = await _mediator.Send(pokemonQuery);
+            return response;
         }
 
         public Task<GenericResponse> GetByUltraBeastAsync()
