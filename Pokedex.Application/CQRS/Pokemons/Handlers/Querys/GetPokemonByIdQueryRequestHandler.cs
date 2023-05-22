@@ -27,7 +27,7 @@ namespace Pokedex.Application.CQRS.Pokemons.Handlers.Querys
 
                 return new GenericResponse
                 {
-                    IsSuccessful = true
+                    IsSuccessful = true,
                     Message = "Successfully obtained pokemon",
                     Object = pokemonDTO
                 };
