@@ -7,7 +7,7 @@ using Pokedex.Domain.Interfaces;
 
 namespace Pokedex.Application.CQRS.Pokemons.Handlers.Querys
 {
-    public class GetPokemonsByMythicalQueryHandler : IRequestHandler<GetPokemonsByMegaQueryRequest, GenericResponse>
+    public class GetPokemonsByMythicalQueryHandler : IRequestHandler<GetPokemonsByMythicalQueryRequest, GenericResponse>
     {
         private readonly IPokemonRepository _pokemonRepository;
         private readonly IMapper _mapper;
@@ -18,7 +18,7 @@ namespace Pokedex.Application.CQRS.Pokemons.Handlers.Querys
             _mapper = mapper;
         }
 
-        public async Task<GenericResponse> Handle(GetPokemonsByMegaQueryRequest request, CancellationToken cancellationToken)
+        public async Task<GenericResponse> Handle(GetPokemonsByMythicalQueryRequest request, CancellationToken cancellationToken)
         {
             try
             {
