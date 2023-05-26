@@ -14,6 +14,10 @@ namespace Pokedex.Infra.Data.EntityConfiguration
             builder.Property(x => x.Type).IsRequired();
             builder.Property(x => x.UrlImage).IsRequired();
 
+            builder.Property(x => x.Id)
+            .ValueGeneratedOnAdd()
+            .UseIdentityColumn();
+
             builder
                 .Property(p => p.Type)
                 .HasConversion(

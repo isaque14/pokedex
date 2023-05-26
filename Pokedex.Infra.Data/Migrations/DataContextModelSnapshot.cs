@@ -39,7 +39,10 @@ namespace Pokedex.Infra.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool>("IsLegendary")
                         .HasColumnType("bit");
@@ -85,7 +88,10 @@ namespace Pokedex.Infra.Data.Migrations
                         .HasColumnType("nvarchar(25)");
 
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.HasKey("Name");
 

@@ -10,6 +10,10 @@ namespace Pokedex.Infra.Data.EntityConfiguration
         {
             builder.HasKey(x => x.Name);
             builder.Property(x => x.Name).IsRequired().HasMaxLength(25);
+
+            builder.Property(x => x.Id)
+            .ValueGeneratedOnAdd()
+            .UseIdentityColumn();
         }
     }
 }

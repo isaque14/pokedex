@@ -8,7 +8,10 @@ namespace Pokedex.Application.Services.ExternalAPI
     {
         private readonly IPokeExternalAPIServiceRefit _refitService;
         private const int FirstPokeGen1 = 1;
-        private const int LastPokeGen1 = 151;
+        private const int LastPokeGen1 = 111;
+        private const int FirstPokeGen1P2 = 113;
+        private const int LastPokeGen1P2 = 151;
+
         private const string UrlBaseSpritPokemon = "https://firebasestorage.googleapis.com/v0/b/pokedex-28a17.appspot.com/o/pokedex%2F";
           
         public GetDataPokemonInExternalAPIService(IPokeExternalAPIServiceRefit refitService)
@@ -21,6 +24,12 @@ namespace Pokedex.Application.Services.ExternalAPI
             var pokemonsDTO = new List<PokemonDTO>();
 
             for (int pokemonNumber = FirstPokeGen1; pokemonNumber <= LastPokeGen1; pokemonNumber++)
+            {
+                var pokemonDTO = await GetPokeInExternalAPIByNumberPokedexAsync(pokemonNumber);
+                pokemonsDTO.Add(pokemonDTO);
+            }
+
+            for (int pokemonNumber = FirstPokeGen1P2; pokemonNumber <= LastPokeGen1P2; pokemonNumber++)
             {
                 var pokemonDTO = await GetPokeInExternalAPIByNumberPokedexAsync(pokemonNumber);
                 pokemonsDTO.Add(pokemonDTO);

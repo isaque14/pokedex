@@ -4,7 +4,7 @@
 
 namespace Pokedex.Infra.Data.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,6 +14,7 @@ namespace Pokedex.Infra.Data.Migrations
                 {
                     Name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
@@ -29,6 +30,7 @@ namespace Pokedex.Infra.Data.Migrations
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EvolutionStage = table.Column<int>(type: "int", nullable: false),
+                    EvolutionLine = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsStarter = table.Column<bool>(type: "bit", nullable: false),
                     IsLegendary = table.Column<bool>(type: "bit", nullable: false),
                     IsMythical = table.Column<bool>(type: "bit", nullable: false),
@@ -37,6 +39,7 @@ namespace Pokedex.Infra.Data.Migrations
                     UrlImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RegionName = table.Column<string>(type: "nvarchar(25)", nullable: false),
                     Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
