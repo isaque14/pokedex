@@ -22,7 +22,9 @@ namespace Pokedex.Tests.Repositories
 
         public Task<Region> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var region = new Region("Kanto");
+
+            return Task.FromResult(region as Region);
         }
 
         public Task<Region> GetByNameAsync(string name)
