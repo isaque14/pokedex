@@ -9,13 +9,13 @@ using Pokedex.Tests.Repositories;
 
 namespace Pokedex.Tests.QueryTests
 {
-    public class GetPokemonsByLegendaryQueryRequestTest
+    public class GetPokemonsByMegaQueryRequestTest
     {
         private readonly IMapper _mapper;
-        private readonly GetPokemonsByLegendaryQueryHandler _handler;
-        private const int _allPokemonsLegendaryInFakeRepository = 2;
+        private readonly GetPokemonsByMegaQueryHandler _handler;
+        private const int _allPokemonsMegaInFakeRepository = 3;
 
-        public GetPokemonsByLegendaryQueryRequestTest()
+        public GetPokemonsByMegaQueryRequestTest()
         {
             var configuration = new MapperConfiguration(config =>
             {
@@ -27,15 +27,15 @@ namespace Pokedex.Tests.QueryTests
             service.AddSingleton(_mapper);
 
             var provider = service.BuildServiceProvider();
-            _handler = new GetPokemonsByLegendaryQueryHandler(new FakePokemonRepository(), _mapper);
+            _handler = new GetPokemonsByMegaQueryHandler(new FakePokemonRepository(), _mapper);
         }
 
-        [Fact(DisplayName = "QueryHandler Valid return all pokemons legendary")]
-        public void QueryHandler_ValidQuery_ReturnAllPokemonsLegendary()
+        [Fact(DisplayName = "QueryHandler Valid return all pokemons with Mega Evolution")]
+        public void QueryHandler_ValidQuery_ReturnAllPokemosByMega()
         {
-            GenericResponse response = _handler.Handle(new GetPokemonsByLegendaryQueryRequest(), new CancellationToken()).Result;
+            GenericResponse response = _handler.Handle(new GetPokemonsByMegaQueryRequest(), new CancellationToken()).Result;
             var pokemonsDTO = response.Object as List<PokemonDTO>;
-            Assert.Equal(_allPokemonsLegendaryInFakeRepository, pokemonsDTO.Count);
+            Assert.Equal(_allPokemonsMegaInFakeRepository, pokemonsDTO.Count);
         }
     }
 }
