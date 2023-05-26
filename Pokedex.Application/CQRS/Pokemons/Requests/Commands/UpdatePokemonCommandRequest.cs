@@ -7,10 +7,5 @@ namespace Pokedex.Application.CQRS.Pokemons.Requests.Commands
     public class UpdatePokemonCommandRequest : PokemonCommand, IRequest<GenericResponse>
     {
         public int Id { get; set; }
-
-        public UpdatePokemonCommandRequest(int id)
-        {
-            Id = id;
-        }
     }
 }
