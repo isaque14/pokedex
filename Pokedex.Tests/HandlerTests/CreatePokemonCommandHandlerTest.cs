@@ -10,6 +10,7 @@ using Pokedex.Application.Mappings;
 using Pokedex.Application.Services;
 using Pokedex.Domain.Entities.Enums;
 using Pokedex.Tests.Repositories;
+using Pokedex.Tests.Services;
 
 namespace Pokedex.Tests.HandlerTests
 {
@@ -70,7 +71,7 @@ namespace Pokedex.Tests.HandlerTests
             var provider = service.BuildServiceProvider();
             _validator = provider.GetService<ValidateCreatePokemon>();
 
-            _handler = new CreatePokemonCommandHandler(new FakePokemonRepository(), _mapper, new FakePersonageService(), _validator);
+            _handler = new CreatePokemonCommandHandler(new FakePokemonRepository(), _mapper, _validator);
         }
 
         [Fact(DisplayName = "Handler with invalid command result in stop application")]
@@ -80,8 +81,8 @@ namespace Pokedex.Tests.HandlerTests
             Assert.False(response.IsSuccessful);
         }
 
-        [Fact(DisplayName = "Handler with valid command, create Movie")]
-        public void CreateMovieHandler_WithValidCommand_ResultInMovieCreated()
+        [Fact(DisplayName = "Handler with valid command, create Pokemon")]
+        public void CreateMovieHandler_WithValidCommand_ResultInPokemonCreated()
         {
             GenericResponse response = _handler.Handle(_validCommand, new CancellationToken()).Result;
             Assert.True(response.IsSuccessful);
