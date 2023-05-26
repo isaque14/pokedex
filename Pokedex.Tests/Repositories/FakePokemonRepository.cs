@@ -353,21 +353,6 @@ namespace Pokedex.Tests.Repositories
             var pokemonMock = new List<Pokemon>();
 
             pokemonMock.Add(new Pokemon(
-                "Lucario",
-                16,
-                new List<EPokemonType>() { EPokemonType.Fighting },
-                "Test Description",
-                2,
-                new List<string>() { "Riolu", "Lucario" },
-                false,
-                false,
-                false,
-                false,
-                true,
-                "URL string here",
-                "Jotho"));
-
-            pokemonMock.Add(new Pokemon(
                 "Pinser",
                 87,
                 new List<EPokemonType>() { EPokemonType.Electric },

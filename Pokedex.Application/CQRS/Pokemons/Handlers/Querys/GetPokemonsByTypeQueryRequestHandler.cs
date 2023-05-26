@@ -22,8 +22,8 @@ namespace Pokedex.Application.CQRS.Pokemons.Handlers.Querys
         {
             try
             {
-                var pokemonEntity = await _pokemonRepository.GetByTypeAsync(request.Type[0]);
-                var pokemonDTO = _mapper.Map<PokemonDTO>(pokemonEntity);
+                var pokemonsEntity = await _pokemonRepository.GetByTypeAsync(request.Type[0]);
+                var pokemonDTO = _mapper.Map<IEnumerable<PokemonDTO>>(pokemonsEntity);
 
                 return new GenericResponse
                 {
