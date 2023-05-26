@@ -30,7 +30,7 @@ namespace Pokedex.Application.CQRS.Pokemons.Handlers.Commands
             {
                 return new GenericResponse
                 {
-                    IsSuccessful = true,
+                    IsSuccessful = false,
                     Message = "Oops! Review the data you provided",
                     Object = request.ErrorMensage(results.Errors)
                 };

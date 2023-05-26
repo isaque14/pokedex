@@ -10,14 +10,14 @@ using Pokedex.Application.Mappings;
 using Pokedex.Application.Services;
 using Pokedex.Domain.Entities.Enums;
 using Pokedex.Tests.Repositories;
-using Pokedex.Tests.Services;
 
 namespace Pokedex.Tests.HandlerTests
 {
-    public class CreatePokemonCommandHandlerTest
+    public class UpdatePokemonCommandRequestHandlerTest
     {
-        private readonly CreatePokemonCommandRequest _validCommand = new CreatePokemonCommandRequest
+        private readonly UpdatePokemonCommandRequest _validCommand = new UpdatePokemonCommandRequest
         {
+            Id = 151,
             Name = "Mew",
             Type = new List<EPokemonType>() { EPokemonType.Psychic },
             PokedexNumber = 151,
@@ -34,8 +34,9 @@ namespace Pokedex.Tests.HandlerTests
             RegionDTO = new RegionDTO { Id = 1, Name = "Kanto" }
         };
 
-        private readonly CreatePokemonCommandRequest _invalidCommand = new CreatePokemonCommandRequest
+        private readonly UpdatePokemonCommandRequest _invalidCommand = new UpdatePokemonCommandRequest
         {
+            Id = 0,
             Name = "P",
             Type = new List<EPokemonType>() { EPokemonType.Psychic },
             PokedexNumber = 0,
@@ -53,10 +54,10 @@ namespace Pokedex.Tests.HandlerTests
         };
 
         private readonly IMapper _mapper;
-        private readonly ValidateCreatePokemon _validator;
-        private readonly CreatePokemonCommandHandler _handler;
+        private readonly ValidateUpdatePokemon _validator;
+        private readonly UpdatePokemonCommandHandler _handler;
 
-        public CreatePokemonCommandHandlerTest()
+        public UpdatePokemonCommandRequestHandlerTest()
         {
             var configuration = new MapperConfiguration(config =>
             {
@@ -66,23 +67,23 @@ namespace Pokedex.Tests.HandlerTests
             _mapper = configuration.CreateMapper();
             var service = new ServiceCollection();
             service.AddSingleton(_mapper);
-            service.AddScoped<ValidateCreatePokemon>();
+            service.AddScoped<ValidateUpdatePokemon>();
             service.AddScoped<IPokemonService, PokemonService>();
             var provider = service.BuildServiceProvider();
-            _validator = provider.GetService<ValidateCreatePokemon>();
+            _validator = provider.GetService<ValidateUpdatePokemon>();
 
-            _handler = new CreatePokemonCommandHandler(new FakePokemonRepository(), _mapper, _validator);
+            _handler = new UpdatePokemonCommandHandler(new FakePokemonRepository(), _mapper, _validator);
         }
 
         [Fact(DisplayName = "Handler with invalid command result in stop application")]
-        public void CreatePokemonHandler_WithInvalidCommand_ResultInStopApplication()
+        public void UpdatePokemonHandler_WithInvalidCommand_ResultInStopApplication()
         {
             GenericResponse response = _handler.Handle(_invalidCommand, new CancellationToken()).Result;
             Assert.False(response.IsSuccessful);
         }
 
-        [Fact(DisplayName = "Handler with valid command, create Pokemon")]
-        public void CreatePokemonHandler_WithValidCommand_ResultInPokemonCreated()
+        [Fact(DisplayName = "Handler with valid command, Update Pokemon")]
+        public void UpdatePokemonHandler_WithValidCommand_ResultInPokemonCreated()
         {
             GenericResponse response = _handler.Handle(_validCommand, new CancellationToken()).Result;
             Assert.True(response.IsSuccessful);
