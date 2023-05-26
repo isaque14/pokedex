@@ -291,7 +291,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "kanto"));
+                "Jotho"));
 
             return Task.FromResult(pokemonMock as IEnumerable<Pokemon>);
         }
