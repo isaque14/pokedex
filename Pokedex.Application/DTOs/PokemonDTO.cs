@@ -4,6 +4,7 @@ namespace Pokedex.Application.DTOs
 {
     public class PokemonDTO
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int PokedexNumber { get; set; }
         public List<EPokemonType> Type { get; set; }
