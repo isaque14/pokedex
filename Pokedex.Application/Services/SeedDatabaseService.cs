@@ -3,7 +3,6 @@ using Pokedex.Application.Interfaces;
 using Pokedex.Application.Interfaces.ExternalAPI;
 using Pokedex.Domain.Entities;
 using Pokedex.Domain.Interfaces;
-using System.Runtime.CompilerServices;
 
 namespace Pokedex.Application.Services
 {
