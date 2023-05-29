@@ -4,8 +4,9 @@ using Pokedex.Application.CQRS.Pokemons.Requests.Commands.Base;
 
 namespace Pokedex.Application.CQRS.Pokemons.Requests.Querys
 {
-    public class GetPokemonsByRegionNameQueryRequest : PokemonCommand, IRequest<GenericResponse>
+    public class GetPokemonsByRegionNameQueryRequest : IRequest<GenericResponse>
     {
+        public string RegionName { get; set; }
         public GetPokemonsByRegionNameQueryRequest(string regionName)
         {
             RegionName = regionName;

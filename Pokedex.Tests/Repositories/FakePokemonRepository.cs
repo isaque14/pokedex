@@ -34,7 +34,7 @@ namespace Pokedex.Tests.Repositories
                 false, 
                 false, 
                 "URL string here", 
-                "kanto"));
+                1));
 
             pokemonMock.Add(new Pokemon(
                 "Pichu",
@@ -49,7 +49,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 false,
                 "URL string here",
-                "Jotho"));
+                1));
 
             pokemonMock.Add(new Pokemon(
                 "Raichu",
@@ -64,7 +64,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 false,
                 "URL string here",
-                "kanto"));
+                1));
 
             return Task.FromResult(pokemonMock as IEnumerable<Pokemon>);
         }
@@ -86,7 +86,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 false,
                 "URL string here",
-                "kanto");
+                1);
 
             return Task.FromResult(pokemonMock);
         }
@@ -109,7 +109,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 false,
                 "URL string here",
-                "Jotho"));
+                1));
 
             pokemonsMock.Add(new Pokemon(
                 6,
@@ -125,7 +125,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 false,
                 "URL string here",
-                "Kanto"));
+                1));
 
             return Task.FromResult(pokemonsMock as IEnumerable<Pokemon>);
         }
@@ -147,7 +147,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "Jotho"));
+                1));
 
             pokemonMock.Add(new Pokemon(
                 "Pinser",
@@ -162,7 +162,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "Jotho"));
+                1));
 
             pokemonMock.Add(new Pokemon(
                 "Raichu",
@@ -177,7 +177,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "kanto"));
+                1));
 
             return Task.FromResult(pokemonMock as IEnumerable<Pokemon>);
         }
@@ -199,7 +199,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 false,
                 "URL string here",
-                "kanto"));
+                1));
 
             return Task.FromResult(pokemonsMock as IEnumerable<Pokemon>);
         }
@@ -219,7 +219,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 false,
                 "URL string here",
-                "kanto");
+                1);
 
             return Task.FromResult(pokemonMock as Pokemon);
         }
@@ -239,7 +239,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 false,
                 "URL string here",
-                "kanto");
+                1);
 
             return Task.FromResult(pokemonMock as Pokemon);
         }
@@ -261,7 +261,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "Jotho"));
+                1));
 
             pokemonMock.Add(new Pokemon(
                 "Pinser",
@@ -276,7 +276,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "Jotho"));
+                1));
 
             pokemonMock.Add(new Pokemon(
                 "Raichu",
@@ -291,7 +291,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "Jotho"));
+                1));
 
             return Task.FromResult(pokemonMock as IEnumerable<Pokemon>);
         }
@@ -313,7 +313,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "Jotho"));
+                1));
 
             pokemonMock.Add(new Pokemon(
                 "Pinser",
@@ -328,7 +328,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "Jotho"));
+                1));
 
             pokemonMock.Add(new Pokemon(
                 "Raichu",
@@ -343,7 +343,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "kanto"));
+                1));
 
             return Task.FromResult(pokemonMock as IEnumerable<Pokemon>);
         }
@@ -365,7 +365,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "Jotho"));
+                1));
 
             pokemonMock.Add(new Pokemon(
                 "Raichu",
@@ -380,7 +380,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "kanto"));
+                1));
 
             return Task.FromResult(pokemonMock as IEnumerable<Pokemon>);
         }
@@ -402,7 +402,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "Jotho"));
+                1));
 
             pokemonMock.Add(new Pokemon(
                 "Pinser",
@@ -417,7 +417,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "Jotho"));
+                1));
 
             pokemonMock.Add(new Pokemon(
                 "Raichu",
@@ -432,7 +432,7 @@ namespace Pokedex.Tests.Repositories
                 false,
                 true,
                 "URL string here",
-                "kanto"));
+                1));
 
             return Task.FromResult(pokemonMock as IEnumerable<Pokemon>);
         }

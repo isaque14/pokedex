@@ -30,7 +30,7 @@ namespace Pokedex.Tests.HandlerTests
             IsMythical = true,
             IsUltraBeast = false,
             UrlImage = "URL Image test",
-            RegionName = "Kanto",
+            RegionId = 1,
             RegionDTO = new RegionDTO { Id = 1, Name = "Kanto" }
         };
 
@@ -49,7 +49,7 @@ namespace Pokedex.Tests.HandlerTests
             IsMythical = true,
             IsUltraBeast = false,
             UrlImage = "URL Image test",
-            RegionName = "Kanto",
+            RegionId = 1,
             RegionDTO = new RegionDTO { Id = 1, Name = "Kanto" }
         };
 

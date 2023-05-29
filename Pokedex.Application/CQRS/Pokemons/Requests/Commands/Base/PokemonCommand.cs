@@ -18,7 +18,7 @@ namespace Pokedex.Application.CQRS.Pokemons.Requests.Commands.Base
         public bool IsUltraBeast { get; set; }
         public bool IsMega { get; set; }
         public string UrlImage { get; set; }
-        public string RegionName { get; set; }
+        public int RegionId { get; set; }
         public RegionDTO RegionDTO { get; set; }
 
         public string ErrorMensage(List<ValidationFailure> errors)

@@ -33,7 +33,7 @@ namespace Pokedex.Infra.Data.EntityConfiguration
                     evolutionLine => string.Join(",", evolutionLine),
                     str => str.Split(",", StringSplitOptions.RemoveEmptyEntries).ToList());
 
-            builder.HasOne(e => e.Region).WithMany(e => e.Pokemons).HasForeignKey(e => e.RegionName);
+            builder.HasOne(e => e.Region).WithMany(e => e.Pokemons).HasForeignKey(e => e.RegionId);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Pokedex.Domain.Entities
         public bool IsUltraBeast { get; private set; }
         public bool IsMega { get; set; }
         public string UrlImage { get; private set; }
-        public string RegionName { get; set; }
+        public int RegionId { get; set; }
         public Region Region { get; set; }
 
         public Pokemon(
@@ -33,7 +33,7 @@ namespace Pokedex.Domain.Entities
             bool isUltraBeast,
             bool isMega,
             string urlImage,
-            string regionName)
+            int regionId)
         {
             Name = name;
             PokedexNumber = pokedexNumber;
@@ -47,7 +47,7 @@ namespace Pokedex.Domain.Entities
             IsUltraBeast = isUltraBeast;
             IsMega = isMega;
             UrlImage = urlImage;
-            RegionName = regionName;
+            RegionId = regionId;
         }
 
         public Pokemon(
@@ -64,7 +64,7 @@ namespace Pokedex.Domain.Entities
             bool isUltraBeast,
             bool isMega,
             string urlImage,
-            string regionName)
+            int regionId)
         {
             Id = id;
             Name = name;
@@ -79,7 +79,7 @@ namespace Pokedex.Domain.Entities
             IsUltraBeast = isUltraBeast;
             IsMega = isMega;
             UrlImage = urlImage;
-            RegionName = regionName;
+            RegionId = regionId;
         }
 
         public void Update(
@@ -95,7 +95,7 @@ namespace Pokedex.Domain.Entities
             bool isUltraBeast,
             bool isMega,
             string urlImage,
-            string regionName)
+            int regionId)
         {
             Name = name;
             PokedexNumber = pokedexNumber;
@@ -109,7 +109,7 @@ namespace Pokedex.Domain.Entities
             IsUltraBeast = isUltraBeast;
             IsMega = isMega;
             UrlImage = urlImage;
-            RegionName = regionName;
+            RegionId = regionId;
         }
 
     }

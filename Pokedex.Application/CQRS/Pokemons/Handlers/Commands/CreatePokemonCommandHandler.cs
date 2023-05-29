@@ -49,7 +49,7 @@ namespace Pokedex.Application.CQRS.Pokemons.Handlers.Commands
                 isUltraBeast: request.IsUltraBeast,
                 isMega: request.IsMega,
                 urlImage: request.UrlImage,
-                regionName: request.RegionName                
+                regionId: request.RegionId                
                 );
 
             try
