@@ -25,7 +25,7 @@ namespace Pokedex.Application.CQRS.Pokemons.Validations
             RuleFor(p => p.Description)
                 .NotNull()
                 .NotEmpty()
-                .MaximumLength(100)
+                .MaximumLength(1024)
                 .WithMessage("Description must be a maximum of 100 characters");
 
             RuleFor(p => p.UrlImage)

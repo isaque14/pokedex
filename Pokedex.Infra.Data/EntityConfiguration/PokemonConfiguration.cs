@@ -9,7 +9,7 @@ namespace Pokedex.Infra.Data.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Pokemon> builder)
         {
-            builder.HasKey(x => x.Name);
+            builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).IsRequired().HasMaxLength(25);
             builder.Property(x => x.Type).IsRequired();
             builder.Property(x => x.UrlImage).IsRequired();

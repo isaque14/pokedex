@@ -33,7 +33,9 @@ namespace Pokedex.Infra.Data.Repositories
         public async Task<Pokemon> GetByIdAsync(int id)
         {
             return await _context.Pokemons
-                .FindAsync(id);
+                .Where(x => x.Id == id)
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Pokemon>> GetByLegendaryAsync()
@@ -85,9 +87,10 @@ namespace Pokedex.Infra.Data.Repositories
 
         public async Task<IEnumerable<Pokemon>> GetByTypeAsync(EPokemonType type)
         {
-            return await _context.Pokemons
+            return _context.Pokemons
+                .AsEnumerable()
                 .Where(p => p.Type.Contains(type))
-                .ToListAsync();
+                .ToList();
         }
 
         public async Task<IEnumerable<Pokemon>> GetByUltraBeastAsync()
@@ -106,12 +109,20 @@ namespace Pokedex.Infra.Data.Repositories
 
         public async Task UpdateAsync(Pokemon pokemon)
         {
-            await Task.Run(() =>
+            try
             {
-                _context.Pokemons.Update(pokemon);
-            });
-          
-            await _context.SaveChangesAsync();  
+                await Task.Run(() =>
+                {
+                    _context.Pokemons.Update(pokemon);
+                });
+
+            await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+             
         }
 
         public async Task DeleteAsync(int id)

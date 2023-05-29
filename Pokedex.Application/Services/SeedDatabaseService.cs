@@ -38,7 +38,7 @@ namespace Pokedex.Application.Services
                 {
                     await IsertDefaultRegions();
 
-                    var pokemonsDTO = await _externalAPIService.GetAllPokemonsGen1();
+                    var pokemonsDTO = await _externalAPIService.GetAllPokemonsGen5();
                     var pokemonsEntity = _mapper.Map<IEnumerable<Pokemon>>(pokemonsDTO);
 
                     foreach (var pokemon in pokemonsEntity)

@@ -41,6 +41,7 @@ namespace Pokedex.Infra.IoC
 
             services.AddScoped<IGetDataPokemonInExternalAPIService, GetDataPokemonInExternalAPIService>();
             services.AddScoped<ISeedDatabaseService, SeedDatabaseService>();
+            services.AddScoped<IPokemonService, PokemonService>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
            
