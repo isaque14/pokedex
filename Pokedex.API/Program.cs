@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddInfrastructureAPI(builder.Configuration);
 builder.Services.AddInfrastructureExternalApiPoke(builder.Configuration);
 builder.Services.AddInfrastructureSendGrid(builder.Configuration);
+builder.Services.AddInfrastructureSwagger();
 
 // Add services to the container.
 
@@ -22,13 +23,17 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Famdom Star Wars API V1");
+    c.RoutePrefix = "swagger";
+});
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
 
 
 using (var serviceScope = app.Services.CreateScope())
