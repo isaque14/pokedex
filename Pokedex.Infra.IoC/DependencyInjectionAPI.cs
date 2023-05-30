@@ -11,6 +11,7 @@ using Pokedex.Application.Interfaces.ExternalAPI;
 using Pokedex.Application.Mappings;
 using Pokedex.Application.Services;
 using Pokedex.Application.Services.ExternalAPI;
+using Pokedex.Domain.Account;
 using Pokedex.Domain.Interfaces;
 using Pokedex.Infra.Data.Context;
 using Pokedex.Infra.Data.Identity;
@@ -28,6 +29,9 @@ namespace Pokedex.Infra.IoC
                 b => b.MigrationsAssembly(typeof(DataContext).Assembly.FullName))
             );
 
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<DataContext>()
+                .AddDefaultTokenProviders();
 
             services.AddControllers().AddFluentValidation(config =>
             {
@@ -43,6 +47,8 @@ namespace Pokedex.Infra.IoC
             services.AddScoped<ISeedDatabaseService, SeedDatabaseService>();
             services.AddScoped<IPokemonService, PokemonService>();
             services.AddScoped<IRegionService, RegionService>();
+            services.AddScoped<IAuthenticate, AuthenticateService>();
+            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
            

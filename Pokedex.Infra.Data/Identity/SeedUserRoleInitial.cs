@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Pokedex.Domain.Account;
 
 namespace Pokedex.Infra.Data.Identity
 {
-    public class SeedUserRoleInitial
+    public class SeedUserRoleInitial : ISeedUserRoleInitial
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
