@@ -61,7 +61,9 @@ app.UseHealthChecks("/health", new HealthCheckOptions
 });
 
 
-app.UseHealthChecksUI(options => { options.UIPath = "/dashbord"; });
+app.UseHealthChecksUI(options => { options.UIPath = "/dashbord";
+    options.AddCustomStylesheet("HealthCheckStyle.css");
+});
 
 app.MapHealthChecksUI();
 

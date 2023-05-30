@@ -1,0 +1,14 @@
+﻿:root {
+    --bgMain: #f5f5f5; /* Cor de fundo */
+    --fcBase: #000; /* Cor da fonte */
+    --bgMenuActive: #ffcb05; /* Cor de fundo do item de menu ativo */
+    --bcMenuActive: #ffcb05; /* Cor da borda do item de menu ativo */
+    --primaryColor: #ffcb05; /* Cor primária */
+    --secondaryColor: #cc0000; /* Cor secundária */
+    --bgMenuActive: #ffcb05; /* Cor de fundo do item de menu quando ativo */
+    --bgButton: #cc0000; /* Cor de fundo do botão */
+    --logoImageUrl: url('https://firebasestorage.googleapis.com/v0/b/pokedex-28a17.appspot.com/o/pokedex%2Frotondex.png?alt=media'); /* URL da imagem do logotipo */
+    --bgAside: #ffcb05; /* Cor de fundo do aside */
+    --bgTable: #f5f5f5; /* Cor de fundo da tabela */
+    --bgTableSecondary: #cc0000; /* Cor de fundo secundária da tabela */
+}
