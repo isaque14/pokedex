@@ -11,6 +11,7 @@ builder.Services.AddInfrastructureAPI(builder.Configuration);
 builder.Services.AddInfrastructureExternalApiPoke(builder.Configuration);
 builder.Services.AddInfrastructureSendGrid(builder.Configuration);
 builder.Services.AddInfrastructureSwagger();
+builder.Services.AddInfrastructureJWT(builder.Configuration);
 
 // Add services to the container.
 
