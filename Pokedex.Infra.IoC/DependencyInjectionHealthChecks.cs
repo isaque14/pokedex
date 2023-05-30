@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pokedex.Application.Services;
 
 namespace Pokedex.Infra.IoC
 {
@@ -16,7 +17,7 @@ namespace Pokedex.Infra.IoC
             {
                 options.SetEvaluationTimeInSeconds(5);
                 options.MaximumHistoryEntriesPerEndpoint(10);
-                options.AddHealthCheckEndpoint("Fandom Star Wars API - Health Checks", "/health");
+                options.AddHealthCheckEndpoint("Pokedex API - Health Checks", "/health");
             })
                 .AddInMemoryStorage();
 

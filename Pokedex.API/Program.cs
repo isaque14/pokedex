@@ -1,4 +1,7 @@
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Pokedex.API.Controllers;
 using Pokedex.Application.Interfaces;
 using Pokedex.Application.Interfaces.ExternalAPI;
 using Pokedex.Application.Services.ExternalAPI;
@@ -12,6 +15,8 @@ builder.Services.AddInfrastructureExternalApiPoke(builder.Configuration);
 builder.Services.AddInfrastructureSendGrid(builder.Configuration);
 builder.Services.AddInfrastructureSwagger();
 builder.Services.AddInfrastructureJWT(builder.Configuration);
+builder.Services.AddInfrastructureHealthChecks(builder.Configuration);
+builder.Services.AddHttpClient<RequestChatGPTController>();
 
 // Add services to the container.
 
@@ -49,9 +54,21 @@ using (var serviceScope = app.Services.CreateScope())
     await seedDatabaseInitial.InserData();
 }
 
+app.UseHealthChecks("/health", new HealthCheckOptions
+{
+    Predicate = p => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
+
+app.UseHealthChecksUI(options => { options.UIPath = "/dashbord"; });
+
+app.MapHealthChecksUI();
+
+app.UseStatusCodePages();
+
+app.UseAuthentication();
 app.UseAuthorization();
-
 
 app.MapControllers();
 
