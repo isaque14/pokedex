@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Pokedex.Application.Interfaces;
 using Pokedex.Application.Interfaces.ExternalAPI;
 using Pokedex.Application.Services.ExternalAPI;
+using Pokedex.Domain.Account;
 using Pokedex.Infra.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,10 @@ using (var serviceScope = app.Services.CreateScope())
 {
     var services = serviceScope.ServiceProvider;
     var seedDatabaseInitial = services.GetRequiredService<ISeedDatabaseService>();
+    var seedUserRoleInitial = services.GetRequiredService<ISeedUserRoleInitial>();
+
+    seedUserRoleInitial.SeedRoles();
+    seedUserRoleInitial.SeedUsers();
 
     await seedDatabaseInitial.InserData();
 }
