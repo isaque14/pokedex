@@ -7,6 +7,7 @@ using Pokedex.Application.Interfaces.ExternalAPI;
 using Pokedex.Application.Services.ExternalAPI;
 using Pokedex.Domain.Account;
 using Pokedex.Infra.IoC;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,8 +24,10 @@ builder.Services.AddHttpClient<RequestChatGPTController>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-            
+//builder.Services.AddSwaggerGen();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(DependencyInjectionSerilog.AddInfrastructureSerilog(builder.Configuration));
 
 var app = builder.Build();
 
@@ -42,17 +45,17 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 
-using (var serviceScope = app.Services.CreateScope())
-{
-    var services = serviceScope.ServiceProvider;
-    var seedDatabaseInitial = services.GetRequiredService<ISeedDatabaseService>();
-    var seedUserRoleInitial = services.GetRequiredService<ISeedUserRoleInitial>();
+//using (var serviceScope = app.Services.CreateScope())
+//{
+//    var services = serviceScope.ServiceProvider;
+//    var seedDatabaseInitial = services.GetRequiredService<ISeedDatabaseService>();
+//    var seedUserRoleInitial = services.GetRequiredService<ISeedUserRoleInitial>();
 
-    seedUserRoleInitial.SeedRoles();
-    seedUserRoleInitial.SeedUsers();
+//    seedUserRoleInitial.SeedRoles();
+//    seedUserRoleInitial.SeedUsers();
 
-    await seedDatabaseInitial.InserData();
-}
+//    await seedDatabaseInitial.InserData();
+//}
 
 app.UseHealthChecks("/health", new HealthCheckOptions
 {
