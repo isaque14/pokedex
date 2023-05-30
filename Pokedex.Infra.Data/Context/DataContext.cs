@@ -5,7 +5,7 @@ using Pokedex.Infra.Data.Identity;
 
 namespace Pokedex.Infra.Data.Context
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<ApplicationUser>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
