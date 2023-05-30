@@ -9,7 +9,7 @@
 
         public ChatGptInputModel(string prompt)
         {
-            this.prompt = $"pokémon: {prompt}";
+            this.prompt = $"world pokémon: {prompt}";
             temperature = 0.2m;
             max_tokens = 100;
             model = "text-davinci-003";
