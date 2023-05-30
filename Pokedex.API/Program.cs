@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddInfrastructureAPI(builder.Configuration);
 builder.Services.AddInfrastructureExternalApiPoke(builder.Configuration);
+builder.Services.AddInfrastructureSendGrid(builder.Configuration);
 
 // Add services to the container.
 

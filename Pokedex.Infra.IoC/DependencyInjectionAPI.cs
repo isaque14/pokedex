@@ -49,6 +49,7 @@ namespace Pokedex.Infra.IoC
             services.AddScoped<IRegionService, RegionService>();
             services.AddScoped<IAuthenticate, AuthenticateService>();
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+            services.AddScoped<ISendEmailService, SendEmailService>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
            

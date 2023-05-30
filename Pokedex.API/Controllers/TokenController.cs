@@ -1,9 +1,9 @@
 ﻿using FandomStarWars.Application.CQRS.BaseResponses;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Pokedex.API.Models;
+using Pokedex.Application.Interfaces;
 using Pokedex.Domain.Account;
 using Pokedex.Infra.Data.Identity;
 using System.IdentityModel.Tokens.Jwt;
@@ -18,18 +18,18 @@ namespace Pokedex.API.Controllers
     {
         private readonly IAuthenticate _authentication;
         private readonly IConfiguration _configuration;
-        //private readonly ISendEmailService _sendEmailService;
+        private readonly ISendEmailService _sendEmailService;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public TokenController(
             IAuthenticate authentication,
             IConfiguration configuration,
-            //ISendEmailService sendEmailService,
+            ISendEmailService sendEmailService,
             UserManager<ApplicationUser> userManager)
         {
             _authentication = authentication;
             _configuration = configuration;
-            //_sendEmailService = sendEmailService;
+            _sendEmailService = sendEmailService;
             _userManager = userManager;
         }
 
@@ -74,15 +74,16 @@ namespace Pokedex.API.Controllers
 
                 if (result)
                 {
-                    //var content = "Olá, Seja muito bem vindo à Fandom-Star-Wars-API, e não se esqueça, não toleraremos quem vá para o lado negro da força";
-                    //var subject = "Conta criada na Fandom-Star-Wars-API";
+                    var content = $"Olá, Seja muito bem vindo à Pokedex-API, " +
+                        $"Agora que você se cadastrou como um pesquisador Pokémon poderá cadastras todas as suas descobertar de Pokémons e Regiões.";
+                    var subject = "Conta criada na Pokedex-API";
 
-                    //await _sendEmailService.SendEmail(userInfo.Email, subject, content);
+                    await _sendEmailService.SendEmail(userInfo.Email, subject, content);
 
                     return StatusCode(201, new GenericResponse
                     {
                         IsSuccessful = true,
-                        //Message = $"Usuário {userInfo.Email} criado com Sucesso, verifique sua conta de E-mail"
+                        Message = $"User {userInfo.Email} created successfully, check your email account"
                     });
                 }
                 else
@@ -91,7 +92,7 @@ namespace Pokedex.API.Controllers
                     return BadRequest(new GenericResponse
                     {
                         IsSuccessful = false,
-                        Message = "Ops, Erro ao criar conta"
+                        Message = "Ops, Error creating account"
                     });
                 }
             }
@@ -100,7 +101,7 @@ namespace Pokedex.API.Controllers
                 return BadRequest(new GenericResponse
                 {
                     IsSuccessful = false,
-                    Message = "Ops, Erro ao criar conta",
+                    Message = "Ops, Error creating account",
                     Object = e.Message
                 });
             }
