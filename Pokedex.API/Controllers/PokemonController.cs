@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pokedex.Application.DTOs;
 using Pokedex.Application.Interfaces;
+using System.Security.Claims;
 
 namespace Pokedex.API.Controllers
 {
@@ -11,6 +12,7 @@ namespace Pokedex.API.Controllers
     public class PokemonController : ControllerBase
     {
         private readonly IPokemonService _pokemonService;
+        private const int _pokedexNumberLastPokemonOrigin = 493;
 
         public PokemonController(IPokemonService pokemonService)
         {
@@ -29,7 +31,7 @@ namespace Pokedex.API.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("{id}")]
-        public async Task<ActionResult<PokemonDTO>> GetPokemonById(int id)
+        public async Task<ActionResult<GenericResponse>> GetPokemonById(int id)
         {
             var response = await _pokemonService.GetByIdAsync(id);
 
@@ -136,6 +138,17 @@ namespace Pokedex.API.Controllers
                     Message = "Ops, Invalid Data"
                 });
 
+            var role = HttpContext.User.FindFirstValue(ClaimTypes.Role);
+
+            if (pokemonDTO.PokedexNumber <= _pokedexNumberLastPokemonOrigin && role is not "Admin")
+            {
+                return StatusCode(403, new GenericResponse
+                {
+                    IsSuccessful = false,
+                    Message = "Ops, parece que você não tem permissão de alterar este Pokémon, confira se possua uma conta Admin"
+                });
+            }
+
             var response = await _pokemonService.UpdateAsync(pokemonDTO);
 
             return Ok(response);
@@ -146,6 +159,19 @@ namespace Pokedex.API.Controllers
         [Route("{id}")]
         public async Task<ActionResult<PokemonDTO>> DeletePokemon(int id)
         {
+            var role = HttpContext.User.FindFirstValue(ClaimTypes.Role);
+
+            var responsePoke = await _pokemonService.GetByIdAsync(id);
+            var pokemonDTO = responsePoke.Object as PokemonDTO;
+            if (pokemonDTO.PokedexNumber <= _pokedexNumberLastPokemonOrigin && role is not "Admin")
+            {
+                return StatusCode(403, new GenericResponse
+                {
+                    IsSuccessful = false,
+                    Message = "Ops, parece que você não tem permissão de deletar este personagem, confira se possua uma conta Admin"
+                });
+            }
+
             var response = await _pokemonService.DeleteAsync(id);
 
             return response.IsSuccessful ? Ok(response) : NotFound(response);

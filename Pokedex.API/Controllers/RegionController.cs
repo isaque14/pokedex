@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pokedex.Application.DTOs;
 using Pokedex.Application.Interfaces;
+using System.Security.Claims;
 
 namespace Pokedex.API.Controllers
 {
@@ -11,6 +12,7 @@ namespace Pokedex.API.Controllers
     public class RegionController : ControllerBase
     {
         private readonly IRegionService _regionService;
+        private const int _IdLastRegionOrigin = 8;
 
         public RegionController(IRegionService regionService)
         {
@@ -36,6 +38,17 @@ namespace Pokedex.API.Controllers
                     IsSuccessful = false,
                     Message = "Ops, Invalid Data"
                 });
+
+            var role = HttpContext.User.FindFirstValue(ClaimTypes.Role);
+
+            if (id <= _IdLastRegionOrigin && role is not "Admin")
+            {
+                return StatusCode(403, new GenericResponse
+                {
+                    IsSuccessful = false,
+                    Message = "Ops, parece que você não tem permissão de alterar esta Região, confira se possua uma conta Admin"
+                });
+            }
 
             var response = await _regionService.UpdateRegioAsync(regionDTO);
 
