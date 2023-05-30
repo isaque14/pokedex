@@ -1,4 +1,5 @@
 ﻿using FandomStarWars.Application.CQRS.BaseResponses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pokedex.Application.DTOs;
 using Pokedex.Application.Interfaces;
@@ -17,6 +18,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<PokemonDTO>> CreateRegion(string regionName)
         {
             var response = await _regionService.CreateRegioAsync(new RegionDTO { Name = regionName });
@@ -25,6 +27,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<ActionResult<PokemonDTO>> UpdateRegion(int id, RegionDTO regionDTO)
         {
             if (id != regionDTO.Id || regionDTO is null)

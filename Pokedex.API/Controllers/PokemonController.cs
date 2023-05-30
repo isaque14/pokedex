@@ -1,4 +1,5 @@
 ﻿using FandomStarWars.Application.CQRS.BaseResponses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pokedex.Application.DTOs;
 using Pokedex.Application.Interfaces;
@@ -17,6 +18,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<PokemonDTO>>> GetAllPokemons()
         {
             var response = await _pokemonService.GetAllAsync();
@@ -25,6 +27,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("{id}")]
         public async Task<ActionResult<PokemonDTO>> GetPokemonById(int id)
         {
@@ -34,6 +37,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("legendary")]
         public async Task<ActionResult<IEnumerable<PokemonDTO>>> GetPokemonByLegendary()
         {
@@ -43,6 +47,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("Mega")]
         public async Task<ActionResult<IEnumerable<PokemonDTO>>> GetPokemonByMega()
         {
@@ -52,6 +57,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("Mythical")]
         public async Task<ActionResult<IEnumerable<PokemonDTO>>> GetPokemonByMythical()
         {
@@ -61,6 +67,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("Name/{name}")]
         public async Task<ActionResult<PokemonDTO>> GetPokemonByName(string name)
         {
@@ -70,6 +77,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("PokedexNumber/{pokedexNumber}")]
         public async Task<ActionResult<IEnumerable<PokemonDTO>>> GetPokemonByPokedexNumber(int pokedexNumber)
         {
@@ -79,6 +87,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("Region/{nameRegion}")]
         public async Task<ActionResult<IEnumerable<PokemonDTO>>> GetPokemonByNameRegion(string nameRegion)
         {
@@ -88,6 +97,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("Starter")]
         public async Task<ActionResult<IEnumerable<PokemonDTO>>> GetPokemonStarter()
         {
@@ -97,6 +107,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("Type/{type}")]
         public async Task<ActionResult<IEnumerable<PokemonDTO>>> GetPokemonStarter(string type)
         {
@@ -106,6 +117,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<PokemonDTO>> CreatePokemon(PokemonDTO pokemonDTO)
         {
             var response = await _pokemonService.CreateAsync(pokemonDTO);
@@ -114,6 +126,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<ActionResult<PokemonDTO>> UpdatePokemon(int id, PokemonDTO pokemonDTO)
         {
             if (id != pokemonDTO.Id || pokemonDTO is null)
@@ -129,6 +142,7 @@ namespace Pokedex.API.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         [Route("{id}")]
         public async Task<ActionResult<PokemonDTO>> DeletePokemon(int id)
         {

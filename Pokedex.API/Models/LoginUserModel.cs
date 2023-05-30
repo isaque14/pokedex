@@ -1,4 +1,6 @@
-﻿namespace Pokedex.API.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Pokedex.API.Models
 {
     public class LoginUserModel
     {
