@@ -18,10 +18,11 @@
 - AutoMapper 
 - EntityFrameWork
 - Microsoft.AspNetCore.Identity.EntityFrameworkCore
-- PostgreSQL
+- SQL Server
 - Abordagem Code First
 - Arquitetura Clean Code
 - Princípios SOLID
+- Princípios Clean Code
 - Refit 
 - Integração entre API's
 - Integração com ChatGPT
