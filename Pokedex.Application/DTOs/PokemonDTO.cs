@@ -18,7 +18,7 @@ namespace Pokedex.Application.DTOs
         public bool IsUltraBeast { get; set; }
         public bool IsMega { get; set; }
         public string UrlImage { get; set; }
-        public string RegionName { get; set; }
+        public int RegionId { get; set; }
         public RegionDTO? RegionDTO { get; set; }
 
         public PokemonDTO()
@@ -26,13 +26,13 @@ namespace Pokedex.Application.DTOs
             
         }
 
-        public PokemonDTO(string name, List<EPokemonType> type, string description, string urlImage, string regionName)
+        public PokemonDTO(string name, List<EPokemonType> type, string description, string urlImage, int regionId)
         {
             Name = name;
             Type = type;
             Description = description;
             UrlImage = urlImage;
-            RegionName = regionName;
+            RegionId = regionId;
         }
     }
 }

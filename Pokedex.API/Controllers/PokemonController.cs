@@ -189,7 +189,6 @@ namespace Pokedex.API.Controllers
         /// <summary>
         /// Cadastrar Pokémon
         /// </summary>
-        /// <remarks>{JSON}</remarks>
         /// <param name="pokemonDTO">Dados do Pokémon</param>
         /// <returns>Pokémon Criado</returns>
         /// <response code="201">Sucesso</response>
@@ -269,13 +268,22 @@ namespace Pokedex.API.Controllers
             var role = HttpContext.User.FindFirstValue(ClaimTypes.Role);
 
             var responsePoke = await _pokemonService.GetByIdAsync(id);
-            var pokemonDTO = responsePoke.Object as PokemonDTO;
-            if (pokemonDTO.PokedexNumber <= _pokedexNumberLastPokemonOrigin && role is not "Admin")
+
+            if (responsePoke is null)
             {
                 return StatusCode(403, new GenericResponse
                 {
                     IsSuccessful = false,
-                    Message = "Ops, parece que você não tem permissão de deletar este personagem, confira se possua uma conta Admin"
+                    Message = "No Pokémon found this Id"
+                });
+            }
+            var pokemonDTO = responsePoke.Object as PokemonDTO;
+            if (pokemonDTO.PokedexNumber <= _pokedexNumberLastPokemonOrigin && role is not "Admin" )
+            {
+                return StatusCode(403, new GenericResponse
+                {
+                    IsSuccessful = false,
+                    Message = "Ops, parece que você não tem permissão de deletar este Pokémon, confira se possua uma conta Admin"
                 });
             }
 

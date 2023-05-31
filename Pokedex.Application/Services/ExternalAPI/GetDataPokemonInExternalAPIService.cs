@@ -111,7 +111,6 @@ namespace Pokedex.Application.Services.ExternalAPI
             {
                 var pokemonExternalAPI = await _refitService.GetPokemonByNumberPokedex(id);
 
-
                 var pokemonDTO = new PokemonDTO
                 {
                     Name = pokemonExternalAPI[0].name,
@@ -125,9 +124,8 @@ namespace Pokedex.Application.Services.ExternalAPI
                     IsMythical = pokemonExternalAPI[0].mythical,
                     IsUltraBeast = pokemonExternalAPI[0].ultraBeast,
                     IsMega = pokemonExternalAPI[0].mega,
-                    RegionName = GetRegionByGenerationNumber(pokemonExternalAPI[0].gen),
+                    RegionId = pokemonExternalAPI[0].gen,
                     UrlImage = $"{UrlBaseSpritPokemon}{pokemonExternalAPI[0].number}.png?alt=media"                  
-
                 };
 
                 return pokemonDTO;
