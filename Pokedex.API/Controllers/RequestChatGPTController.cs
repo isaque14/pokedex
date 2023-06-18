@@ -40,7 +40,8 @@ namespace Pokedex.API.Controllers
 
             var promptResponse = result.choices.First();
 
-            return Ok(promptResponse.text.Replace("\n", "").Replace("t", ""));
+            var data = new { response = promptResponse.text.Replace("\n", "").Replace("t", "") };
+            return Ok(data);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Pokedex.Application.DTOs
         public string Name { get; set; }
         public int PokedexNumber { get; set; }
         public List<EPokemonType> Type { get; set; }
+        public List<string> Types { get; set; }
         public string Description { get; set; }
         public int EvolutionStage { get; set; }
         public List<string> EvolutionLine { get; set; }
