@@ -9,7 +9,7 @@ namespace Pokedex.Infra.IoC
         public static IServiceCollection AddInfrastructureHealthChecks(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddHealthChecks()
-                .AddSqlServer(configuration.GetConnectionString("Default"), tags: new[] { "database" }, name: "PostgreSQL")
+                .AddSqlServer(configuration.GetConnectionString("Default"), tags: new[] { "database" }, name: "SQL Server")
                 .AddSendGrid(configuration.GetSection("SendGridEmailSettings").GetValue<string>("APIKey"), name: "SendGrid", tags: new[] { "Server-SMTP" })
                 .AddCheck<OpenAIHealthCheckService>(name: "OpenAI Chat-GPT", tags: new[] { "AI" });
 
