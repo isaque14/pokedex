@@ -9,7 +9,7 @@ namespace Pokedex.Application.DTOs
         public string Name { get; set; }
         public int PokedexNumber { get; set; }
         public List<EPokemonType> Type { get; set; }
-        public List<string> Types { get; set; }
+        //public List<string> Types { get; set; }
         public string Description { get; set; }
         public int EvolutionStage { get; set; }
         public List<string> EvolutionLine { get; set; }
@@ -20,7 +20,7 @@ namespace Pokedex.Application.DTOs
         public bool IsMega { get; set; }
         public string UrlImage { get; set; }
         public int RegionId { get; set; }
-        public RegionDTO? RegionDTO { get; set; }
+        //public RegionDTO? RegionDTO { get; set; }
 
         public PokemonDTO()
         {

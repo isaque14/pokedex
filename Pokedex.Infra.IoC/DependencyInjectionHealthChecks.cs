@@ -10,8 +10,8 @@ namespace Pokedex.Infra.IoC
         {
             services.AddHealthChecks()
                 .AddSqlServer(configuration.GetConnectionString("Default"), tags: new[] { "database" }, name: "SQL Server")
-                .AddSendGrid(configuration.GetSection("SendGridEmailSettings").GetValue<string>("APIKey"), name: "SendGrid", tags: new[] { "Server-SMTP" })
-                .AddCheck<OpenAIHealthCheckService>(name: "OpenAI Chat-GPT", tags: new[] { "AI" });
+                .AddSendGrid(configuration.GetSection("SendGridEmailSettings").GetValue<string>("APIKey"), name: "SendGrid", tags: new[] { "Server-SMTP" });
+                //.AddCheck<OpenAIHealthCheckService>(name: "OpenAI Chat-GPT", tags: new[] { "AI" });
 
             services.AddHealthChecksUI(options =>
             {

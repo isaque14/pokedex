@@ -5,6 +5,11 @@
 
 - O Back-End consiste de 6 projetos (Domain, Application, Infra.Data, Infra.Data.IoC, API, Tests) que compõem uma API REST Sobre o Universo de Pokémon, esta aplicação possui os dados dos pokemons presentes na pokedex da franquia. A aplicação também possui um CRUD onde pode-se criar e editar novos pokémons e regiões. Essa aplicação utiliza Autenticação via Token JWT Bearer. Para realizar o cadastro, atualização ou exclusão de Pokémons ou Regiões será necessário estar autenticado na aplicação, para isso vc pode criar uma nova conta informando email e senha, além disso, este projeto está integrado com o ChatGPT onde podemos utiliza-lo para obter informações, curiosidades, notícias e o que mais precisarmos sobre o Universo de Pokémon. Para popular inicialmente o banco de dados, foi consumida a API https://pokedevs.gitbook.io/pokedex/ que contém diversas informações sobre a franquia. Esta é uma aplicação onde foi possível realizar uma ampla cobertura de testes, onde temos toda a regra de negócio e camada de aplicação cobertos por testes unitários, além disso, é feito o tratamento dos Logs utilizando o Serilog e feita a persistência desses logs no banco de dados, também são Utilizados Health Checks para verificar a saúde da aplicação e dos serviços utilizados, e também foi feita a documentação da API utilizando o Swagger.
 
+## Links para os outros projetos
+[Front-End](https://github.com/isaque14/Pokedex-FrontEnd/tree/main)
+</br>
+[Bot](https://github.com/isaque14/RotomBot)
+
 ## Ferramentas e padrões de desenvolvimento utilizados
 - C#
 - AspNetCore
@@ -33,6 +38,7 @@
 - FluentValidation
 - MediatR
 - Token JWT
+- Google FireBase
 - Serilog
 - Health Checks 
 - Envio de Email com Servidor SMTP SendGrid
